@@ -24,7 +24,6 @@ export default function Navbar() {
                     <Link className='text-white/90 hover:text-white' href="https://www.youtube.com" >
                         <FaTwitter />
                     </Link>
-
                 </div>
             </div>
         </nav>
