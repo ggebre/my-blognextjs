@@ -3,7 +3,7 @@ import Navbar from './components/Navbar'
 import MyProfilePic from './components/MyProfilePic'
 export const metadata = {
   title: "Getu's Blog",
-  description: "Getu's blog-my daily journey",
+  description: "Created by Getu Gebre",
 }
 
 export default function RootLayout({
