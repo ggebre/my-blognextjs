@@ -1,3 +1,5 @@
+import { JSXElementConstructor, ReactElement } from "react"
+
 type Meta= {
     id: string, 
     title: string,
@@ -7,6 +9,6 @@ type Meta= {
 
 type BlogPost= {
     meta: Meta,
-    content: any,
+    content: ReactElement<any, string | JSXElementConstructor<any>>,
     
 }

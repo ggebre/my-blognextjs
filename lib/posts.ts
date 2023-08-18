@@ -1,4 +1,5 @@
-import { FaRegWindowClose } from "react-icons/fa"
+import { BlogPost, Meta } from '@/types'
+import { compileMDX } from 'next-mdx-remote/rsc'
 
 type Filetree = {
     "tree" : [
@@ -21,9 +22,17 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
     const rawMDX = await res.text()
 
     if(rawMDX === '404: Not Found') return undefined 
-    
+
+    const { frontmatter, content } = await compileMDX<{ title: string, date: string, tags: string[] } > ({
+        source: rawMDX,
+    })
+
+    const id = fileName.replace(/\.mdx$/, '')
+    const blogPostObj: BlogPost = { meta: { id, title: frontmatter.title, date: frontmatter.date, tags: frontmatter.tags}, content}
+
+    return blogPostObj 
 }
-export async function getPostsMeta(): Promise<Meta[] | undefined >{ 
+export async function getPostsMeta(): Promise< Meta [] | undefined > { 
     const res = await fetch('https://api.github.com/repos/ggebre/test-blogposts/git/trees/main?recursive=1', {
         headers: {
             Accept: 'application/vnd.github+json',
