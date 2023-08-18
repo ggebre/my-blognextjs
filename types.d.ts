@@ -1,5 +1,6 @@
-type BlogPost = {
+type Meta= {
     id: string, 
     title: string,
-    date: string
+    date: string,
+    tags: string[]
 }
