@@ -21,6 +21,7 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
     const rawMDX = await res.text()
 
     if(rawMDX === '404: Not Found') return undefined 
+    
 }
 export async function getPostsMeta(): Promise<Meta[] | undefined >{ 
     const res = await fetch('https://api.github.com/repos/ggebre/test-blogposts/git/trees/main?recursive=1', {
