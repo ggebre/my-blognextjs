@@ -35,7 +35,7 @@ export async function generateMetadata({ params : { postId }} : Props) {
 
 export default async function Post({ params : { postId }} : Props) {
     const post = await getPostByName(`{postId}.mdx`) //deduped
-   
+    
     if(!post) notFound()
     
     const {meta, content} = post 
@@ -45,7 +45,7 @@ export default async function Post({ params : { postId }} : Props) {
         <Link key={i} href={`/tags/${tag}`}> {tag}</Link>
     ))
     return (
-        <>
+        <>      
         <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
         <p className="mt-0 text-sm">
             {pubDate}

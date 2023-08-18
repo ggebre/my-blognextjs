@@ -16,15 +16,18 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
             'X-GitHub-Api-Version': "2022-11-28"
         }
-    })
+    }) 
     if(!res.ok) return undefined 
 
     const rawMDX = await res.text()
-
+  
     if(rawMDX === '404: Not Found') return undefined 
 
     const { frontmatter, content } = await compileMDX<{ title: string, date: string, tags: string[] } > ({
         source: rawMDX,
+        options: {
+            parseFrontmatter: true,
+        }
     })
 
     const id = fileName.replace(/\.mdx$/, '')
