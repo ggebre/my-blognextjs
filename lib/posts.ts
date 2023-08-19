@@ -14,7 +14,7 @@ type Filetree = {
 }
 
 export async function getPostByName(fileName: string): Promise<BlogPost | undefined> {
-    const res = await fetch(`https://api.github.com/repos/ggebre/test-blogposts/git/trees/main/${fileName}`, {
+    const res = await fetch(`https://raw.githubusercontent.com/ggebre/test-blogposts/master/${fileName}`, {
         headers: {
             Accept: 'application/vnd.github+json',
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -40,7 +40,7 @@ export async function getPostByName(fileName: string): Promise<BlogPost | undefi
     return blogPostObj 
 }
 export async function getPostsMeta(): Promise< Meta [] | undefined > { 
-    const res = await fetch('https://api.github.com/repos/ggebre/test-blogposts/git/trees/main?recursive=1', {
+    const res = await fetch('https://api.github.com/repos/ggebre/test-blogposts/git/trees/master?recursive=1', {
         headers: {
             Accept: 'application/vnd.github+json',
             Authorization: `Bearer ${process.env.GITHUB_TOKEN}`,
@@ -62,7 +62,7 @@ export async function getPostsMeta(): Promise< Meta [] | undefined > {
             posts.push(meta)
         }
     }
-
+    
     return posts.sort((a, b) => a.date < b.date ? 1 : -1)
 
 }
