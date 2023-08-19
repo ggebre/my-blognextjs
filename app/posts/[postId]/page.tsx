@@ -20,7 +20,7 @@ type Props = {
 // }
 
 export async function generateMetadata({ params : { postId }} : Props) {
-    const post = await getPostByName(`{postId}.mdx`) //deduped
+    const post = await getPostByName(`${postId}.mdx`) //deduped
 
     if (!post) {
         return {
@@ -34,11 +34,11 @@ export async function generateMetadata({ params : { postId }} : Props) {
 }
 
 export default async function Post({ params : { postId }} : Props) {
-    const post = await getPostByName(`{postId}.mdx`) //deduped
+    const post = await getPostByName(`${postId}.mdx`) //deduped
     
     if(!post) notFound()
     
-    const {meta, content} = post 
+    const { meta, content } = post 
     const pubDate = getFormattedDate(meta.date)
 
     const tags = meta.tags.map((tag, i) => (
