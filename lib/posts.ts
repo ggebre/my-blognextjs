@@ -1,6 +1,10 @@
 import { BlogPost, Meta } from '@/types'
 import { compileMDX } from 'next-mdx-remote/rsc'
+import { Octokit } from 'octokit'
 
+const octokit = new Octokit({
+    auth: `${process.env.GITHUB_TOKEN}`
+})
 type Filetree = {
     "tree" : [
         {
