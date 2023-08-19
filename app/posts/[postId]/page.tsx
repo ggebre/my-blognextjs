@@ -45,23 +45,24 @@ export default async function Post({ params : { postId }} : Props) {
         <Link key={i} href={`/tags/${tag}`}> {tag}</Link>
     ))
     return (
-        <>      
-        <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
-        <p className="mt-0 text-sm">
-            {pubDate}
-        </p>
-        <article>
-            { content}
-        </article>
-        <section>
-            <h3>Related:</h3>
-            <div className="flex flex-row gap-4">
-                { tags }
-            </div>
-        </section>
-        <p className="mb-10">
-            <Link href="/">Back to home</Link>
-        </p>
-        </>
+         
+        <div className="text-white">
+            <h2 className="text-3xl mt-4 mb-0">{meta.title}</h2>
+            <p className="mt-0 text-sm">
+                {pubDate}
+            </p>
+            <article>
+                { content}
+            </article>
+            <section>
+                <h3>Related:</h3>
+                <div className="flex flex-row gap-4">
+                    { tags }
+                </div>
+            </section>
+            <p className="mb-10">
+                <Link href="/">Back to home</Link>
+            </p>
+        </div>    
     )
 }
